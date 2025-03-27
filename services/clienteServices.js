@@ -20,7 +20,7 @@ const clienteServices = {
         return cliente;
     },
 
-    async getClienteBynumber(telefone) {
+    async getClienteByNumber(telefone) {
         const cliente = await Cliente.findOne({ telefone: telefone });
         return cliente;
     },

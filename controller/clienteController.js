@@ -19,5 +19,25 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({ message: error.message });
         }
+    },
+
+    async getClienteByEmail(req, res) {
+        const email = req.params.email;
+        try {
+            const cliente = await clienteServices.getClienteByEmail(email);
+            return res.status(200).json(cliente);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    },
+
+    async getClienteByNumber(req, res) {
+        const telefone = req.params.telefone;
+        try {
+            const cliente = await clienteServices.getClienteByNumber(telefone);
+            return res.status(200).json(cliente);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
     }
 }
