@@ -15,7 +15,7 @@ const vendaServices = {
     },
     async getVendaByCliente(id_cliente) {
         return await Compra.find({ id_cliente: id_cliente });
-    }
+    } 
 }
 
 module.exports = vendaServices;
