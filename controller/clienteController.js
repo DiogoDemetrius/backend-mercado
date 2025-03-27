@@ -1,6 +1,8 @@
 const clienteServices = require('../services/clienteServices');
 
 module.exports = {
+
+    //POST
     async postCliente(req, res) {
         const clienteData = req.body;
         try {
@@ -11,6 +13,7 @@ module.exports = {
         }
     },
     
+    //GET
     async getCliente(req, res) {
         const cpf = req.params.cpf;
         try {
@@ -40,4 +43,7 @@ module.exports = {
             return res.status(500).json({ message: error.message });
         }
     }
+
+    //PUT
+    
 }
