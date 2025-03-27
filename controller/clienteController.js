@@ -9,5 +9,15 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({ message: error.message });
         }
+    },
+    
+    async getCliente(req, res) {
+        const cpf = req.params.cpf;
+        try {
+            const cliente = await clienteServices.getCliente(cpf);
+            return res.status(200).json(cliente);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
     }
 }
