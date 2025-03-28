@@ -32,6 +32,12 @@ const clienteServices = {
         return await cliente.save();
     },
 
+    async putNumberCliente(cpf, telefone) {
+        const cliente = await Cliente.findOne({ cpf: cpf });
+        cliente.telefone = telefone;
+        return await cliente.save();
+    },
+
     //DELETE
     async deleteCliente(cpf) {
         return await Cliente.deleteOne({ cpf: cpf });
