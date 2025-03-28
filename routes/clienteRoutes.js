@@ -11,4 +11,7 @@ router.get('/consulta/:cpf', clienteController.getCliente);
 router.get('consulta/:email', clienteController.getClienteByEmail);
 router.get('consulta/:telefone', clienteController.getClienteByNumber);
 
+//PUT
+router.put('/atualiza/:cpf', clienteController.putEmailCliente);
+
 module.exports = router;
