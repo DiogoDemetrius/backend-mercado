@@ -1,3 +1,4 @@
+const Cliente = require('../model/cliente');
 const clienteServices = require('../services/clienteServices');
 
 module.exports = {
@@ -67,6 +68,30 @@ module.exports = {
 
         try {
             const cliente = await clienteServices.putEmailCliente(cpf, email);
+
+            if (!cliente) {
+                return res.status(404).json({ message: 'Cliente não encontrado.' });
+            }
+
+            return res.status(200).json(cliente);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    },
+
+    async putNumberCliente(req, res) {
+        const cpf = req.params.cpf;
+        const { telefone } = req.body;
+
+        if (!cpf) {
+            return res.status(400).json({ message: 'CPF é obrigatório.' });
+        }
+        if (!telefone) {
+            return res.status(400).json({ message: 'Telefone é obrigatório.' });
+        }
+
+        try {
+            const cliente = await clienteServices.putNumberCliente(cpf, telefone);
 
             if (!cliente) {
                 return res.status(404).json({ message: 'Cliente não encontrado.' });

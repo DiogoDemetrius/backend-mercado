@@ -13,6 +13,7 @@ router.get('consulta/:email', clienteController.getClienteByEmail);
 router.get('consulta/:telefone', clienteController.getClienteByNumber);
 
 //PUT
-router.put('/atualiza/:cpf', clienteController.putEmailCliente);
+router.put('/atualiza/email/:cpf', clienteController.putEmailCliente);
+router.put('/atualiza/telefone/:cpf', clienteController.putNumberCliente);
 
 module.exports = router;
