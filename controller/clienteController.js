@@ -1,4 +1,3 @@
-const { put } = require('../routes/clienteRoutes');
 const clienteServices = require('../services/clienteServices');
 
 module.exports = {
@@ -15,6 +14,15 @@ module.exports = {
     },
     
     //GET
+    async getTodosClientes(req, res) {
+        try {
+            const clientes = await clienteServices.getTodosClientes();
+            return res.status(200).json(clientes);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    },
+
     async getCliente(req, res) {
         const cpf = req.params.cpf;
         try {

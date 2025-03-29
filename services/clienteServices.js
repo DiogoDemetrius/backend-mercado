@@ -10,6 +10,10 @@ const clienteServices = {
     },
 
     //GET
+    async getTodosClientes() {
+        return await Cliente.find();
+    },
+
     async getCliente(cpf) {
         const cliente = await Cliente.findOne({ cpf: cpf });
         return cliente;
