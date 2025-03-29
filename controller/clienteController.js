@@ -101,6 +101,52 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({ message: error.message });
         }
+    },
+
+    //DELETE
+    async deleteCliente(req, res) {
+        const cpf = req.params.cpf;
+        try {
+            const cliente = await clienteServices.deleteCliente(cpf);
+
+            if (!cliente) {
+                return res.status(404).json({ message: 'Cliente não encontrado.' });
+            }
+
+            return res.status(200).json(cliente);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    },
+
+    async deleteClienteByEmail(req, res) {
+        const email = req.params.email;
+        try {
+            const cliente = await clienteServices.deleteClienteByEmail(email);
+
+            if (!cliente) {
+                return res.status(404).json({ message: 'Cliente não encontrado.' });
+            }
+
+            return res.status(200).json(cliente);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+    },
+
+    async deleteClienteByNumber(req, res) {
+        const telefone = req.params.telefone;
+        try {
+            const cliente = await clienteServices.deleteClienteByNumber(telefone);
+
+            if (!cliente) {
+                return res.status(404).json({ messagem: 'Cliente não encontrado.' });
+            }
+
+            return res.status(200).json(cliente);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
     }
     
 }
