@@ -1,0 +1,119 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sistema Mercado API",
+    "description": "API para gerenciamento de clientes no sistema de mercado.",
+    "contact": {
+        "email": "diogod.mmoreira@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/cliente/registro",
+      "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/clientes",
+        "description": "Servidor de teste"
+    }
+    ,
+    {
+        "url": "http://localhost:3000/cliente/consulta/:cpf",
+        "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/consulta/:email",
+        "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/consulta/:telefone",
+        "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/atualiza/email/:cpf",
+        "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/atualiza/telefone/:cpf",
+        "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/delete/:cpf",
+        "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/delete/:email",
+        "description": "Servidor de teste"
+    },
+    {
+        "url": "http://localhost:3000/cliente/delete/:telefone",
+        "description": "Servidor de teste"
+    }
+  ],
+  "paths": {
+    "/registro": {
+      "post": {
+        "summary": "Registrar um novo cliente",
+        "description": "Adiciona um novo cliente ao sistema.",
+        "tag": ["Clientes"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cliente"
+              },
+              "examples": {
+                "registro": {
+                    "value": {
+                        "cpf": "12345678901",
+                        "name": "Lucas Safra",
+                        "telefone": "61923456789",
+                        "email": "lucas.safra@gmail.com"                      
+                    }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+            "201": {
+                "description": "Cliente criado com sucesso."
+            },
+            "401": {
+                "description": "Todos os campos (nome, cpf, email, telefone) são obrigatórios."
+            },
+            "400": {
+                "description": "Cliente já registrado."
+            },
+            "500": {
+                "description": "Erro interno do servidor."
+            }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Cliente": {
+        "type": "object",
+        "properties": {
+            "nome": {
+                "type": "string"
+            },
+            "cpf": {
+                "type": "string"
+            },
+            "email": {
+                "type": "string"
+            },
+            "telefone": {
+                "type": "string"
+            }
+        },
+        "required": ["nome", "cpf", "email", "telefone"]
+      }
+    }
+  }
+}
